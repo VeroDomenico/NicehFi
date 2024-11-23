@@ -2,11 +2,11 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
     darkMode: ["class"],
-    content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+	content: [
+		"./pages/**/**.{js,ts,jsx,tsx,mdx}", // Covering traditional 'pages' directory
+		"./app/**/*.{js,ts,jsx,tsx,mdx}",  // For 'app' folder in Next.js (App Router)
+		"./components/**/*.{js,ts,jsx,tsx,mdx}", // For shared components
+	],
   theme: {
   	extend: {
   		colors: {
