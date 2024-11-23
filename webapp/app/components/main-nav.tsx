@@ -5,7 +5,18 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { LayoutDashboard, Receipt, PiggyBank, Target, BarChart3, LineChart, UserCircle, Settings, Menu } from 'lucide-react'
+import {
+  LayoutDashboard,
+  Receipt,
+  PiggyBank,
+  Target,
+  BarChart3,
+  LineChart,
+  UserCircle,
+  Settings,
+  Menu,
+  LandmarkIcon
+} from 'lucide-react'
 import {
   Sheet,
   SheetContent,
@@ -17,7 +28,7 @@ import {
 
 const navItems = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { name: "Transactions", href: "/transactions", icon: Receipt },
+  { name: "Accounts", href: "/accounts", icon:  LandmarkIcon},
   { name: "Budget", href: "/budget", icon: PiggyBank },
   { name: "Goals", href: "/goals", icon: Target },
   { name: "Investments", href: "/investments", icon: BarChart3 },
