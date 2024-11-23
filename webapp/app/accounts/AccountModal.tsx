@@ -7,7 +7,16 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
+
+
 export function AccountModal({ isOpen, onClose, account = null }) {
+  interface account {
+    accountID: number
+    name: string
+    balance: number
+    type: string
+  }
+
   const [name, setName] = useState('')
   const [balance, setBalance] = useState('')
   const [accountType, setAccountType] = useState('')

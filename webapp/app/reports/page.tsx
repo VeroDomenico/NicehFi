@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
+import {AreaChartComponent} from "@/components/ui/area-chart";
+// import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 
 const data = [
   { month: 'Jan', income: 4000, expenses: 2400 },
@@ -23,17 +24,18 @@ export default function ReportsPage() {
           <CardTitle>Income vs Expenses</CardTitle>
         </CardHeader>
         <CardContent>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={data}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="income" fill="#8884d8" />
-              <Bar dataKey="expenses" fill="#82ca9d" />
-            </BarChart>
-          </ResponsiveContainer>
+          {/*<ResponsiveContainer width="100%" height={300}>*/}
+          {/*  <BarChart data={data}>*/}
+          {/*    <CartesianGrid strokeDasharray="3 3" />*/}
+          {/*    <XAxis dataKey="month" />*/}
+          {/*    <YAxis />*/}
+          {/*    <Tooltip />*/}
+          {/*    <Legend />*/}
+          {/*    <Bar dataKey="income" fill="#8884d8" />*/}
+          {/*    <Bar dataKey="expenses" fill="#82ca9d" />*/}
+          {/*  </BarChart>*/}
+          {/*</ResponsiveContainer>*/}
+          <AreaChartComponent/>
         </CardContent>
       </Card>
       <div className="grid gap-6 md:grid-cols-2">
