@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 
 export function AccountModal({ isOpen, onClose, account = null }) {
+  //Todo integration
   interface account {
     accountID: number
     name: string

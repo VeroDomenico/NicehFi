@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import {AreaChartComponent} from "@/components/ui/area-chart";
+import {LinearCashToMonthChart} from "@/components/ui/LinearCashToMonthChart";
+import {CapitalPieChart} from "@/components/ui/PieChart";
 // import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 
 const data = [
@@ -35,7 +36,6 @@ export default function ReportsPage() {
           {/*    <Bar dataKey="expenses" fill="#82ca9d" />*/}
           {/*  </BarChart>*/}
           {/*</ResponsiveContainer>*/}
-          <AreaChartComponent/>
         </CardContent>
       </Card>
       <div className="grid gap-6 md:grid-cols-2">
@@ -44,7 +44,7 @@ export default function ReportsPage() {
             <CardTitle>Net Worth Trend</CardTitle>
           </CardHeader>
           <CardContent>
-            {/* Placeholder for net worth chart */}
+            <LinearCashToMonthChart/>
             <div className="h-[200px] bg-muted rounded-md"></div>
           </CardContent>
         </Card>
@@ -53,7 +53,7 @@ export default function ReportsPage() {
             <CardTitle>Expense Breakdown</CardTitle>
           </CardHeader>
           <CardContent>
-            {/* Placeholder for expense pie chart */}
+            <CapitalPieChart/>
             <div className="h-[200px] bg-muted rounded-md"></div>
           </CardContent>
         </Card>

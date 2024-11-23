@@ -33,11 +33,11 @@ const chartConfig = {
     },
 } satisfies ChartConfig
 
-export function AreaChartComponent() {
+export function LinearCashToMonthChart() {
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Area Chart</CardTitle>
+                <CardTitle>Area Chart - Linear</CardTitle>
                 <CardDescription>
                     Showing total visitors for the last 6 months
                 </CardDescription>
@@ -62,11 +62,11 @@ export function AreaChartComponent() {
                         />
                         <ChartTooltip
                             cursor={false}
-                            content={<ChartTooltipContent indicator="line" />}
+                            content={<ChartTooltipContent indicator="dot" hideLabel />}
                         />
                         <Area
                             dataKey="desktop"
-                            type="natural"
+                            type="linear"
                             fill="var(--color-desktop)"
                             fillOpacity={0.4}
                             stroke="var(--color-desktop)"
