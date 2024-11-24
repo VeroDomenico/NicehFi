@@ -6,6 +6,7 @@ import {signIn, signOut} from 'next-auth/react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import {SignIn} from "@/components/auth/signin-button"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 
 export default function LoginPage() {
@@ -66,6 +67,7 @@ export default function LoginPage() {
           <Button variant="default" className="w-full" onClick={handleGoogleSignIn}>
             Sign in with Google
           </Button>
+          <SignIn/>
           <div className="flex justify-between">
             <Button variant="link" onClick={() => router.push('/forgot-password')}>Forgot password?</Button>
             <Button variant="link" onClick={() => router.push('/signup')}>Sign up</Button>
