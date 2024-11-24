@@ -1,15 +1,30 @@
+'use client'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { PieChartIcon as ChartPieIcon, WalletIcon, ShieldCheckIcon } from 'lucide-react'
+import { signOut } from "next-auth/react"
 
 export default function DashboardPage() {
+
+  const handleSignOut = async () => {
+    try {
+      console.log("Clicked")
+      await signOut({
+        redirect: true,
+        redirectTo: "/login"
+      });
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
       <header className="bg-white dark:bg-gray-800 shadow">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Finance App Dashboard</h1>
-          <Button variant="outline">Logout</Button>
+          <Button variant="outline" onClick={handleSignOut}>Logout</Button>
         </div>
       </header>
 

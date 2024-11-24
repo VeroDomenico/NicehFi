@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import {redirect, useRouter} from 'next/navigation'
+import {signIn, signOut} from 'next-auth/react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -16,9 +17,18 @@ export default function LoginPage() {
     e.preventDefault()
     // Here you would typically handle the login logic
     // For now, we'll just redirect to the dashboard
-    router.push('/dashboard')
+    router.push('/')
   }
-
+  const handleGoogleSignIn = async () => {
+    try {
+      await signIn('google', {
+        redirect: '/dashboard',
+        redirect: true
+      })
+    } catch (error) {
+      console.error("Error signing in with Google:", error)
+    }
+  }
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col justify-center items-center p-4">
       <Card className="w-full max-w-md">
@@ -30,9 +40,9 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
-              <Input 
-                id="email" 
-                type="email" 
+              <Input
+                id="email"
+                type="email"
                 placeholder="you@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -41,8 +51,8 @@ export default function LoginPage() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
-              <Input 
-                id="password" 
+              <Input
+                id="password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -52,9 +62,14 @@ export default function LoginPage() {
             <Button type="submit" className="w-full">Login</Button>
           </form>
         </CardContent>
-        <CardFooter className="flex justify-between">
-          <Button variant="link" onClick={() => router.push('/forgot-password')}>Forgot password?</Button>
-          <Button variant="link" onClick={() => router.push('/signup')}>Sign up</Button>
+        <CardFooter className="flex flex-col gap-4">
+          <Button variant="default" className="w-full" onClick={handleGoogleSignIn}>
+            Sign in with Google
+          </Button>
+          <div className="flex justify-between">
+            <Button variant="link" onClick={() => router.push('/forgot-password')}>Forgot password?</Button>
+            <Button variant="link" onClick={() => router.push('/signup')}>Sign up</Button>
+          </div>
         </CardFooter>
       </Card>
       <p className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
