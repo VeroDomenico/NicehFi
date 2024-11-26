@@ -1,0 +1,68 @@
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  directUrl         = env("DIRECT_URL")
+  schemas           = ["public", "auth"]
+}
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures   = ["multiSchema"]
+}
+
+model User {
+  id        String    @id @default(uuid())
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+  accounts  Account[]
+
+  @@schema("auth")
+}
+
+model Account {
+  id            String        @id @default(uuid())
+  userId        String
+  name          String
+  type          AccountType
+  balance       Decimal       @db.Decimal(12, 2)
+  currency      String        @default("USD")
+  institution   String?
+  accountNumber String?
+  createdAt     DateTime      @default(now())
+  user          User          @relation(fields: [userId], references: [id])
+  transactions  Transaction[]
+
+  @@schema("public")
+}
+
+model Transaction {
+  id          String          @id @default(uuid())
+  accountId   String
+  type        TransactionType
+  amount      Decimal         @db.Decimal(12, 2)
+  description String?
+  category    String?
+  date        DateTime
+  status      String          @default("completed")
+  createdAt   DateTime        @default(now())
+  account     Account         @relation(fields: [accountId], references: [id])
+
+  @@schema("public")
+}
+
+enum AccountType {
+  CHECKING
+  SAVINGS
+  CREDIT
+  INVESTMENT
+
+  @@schema("public")
+}
+
+enum TransactionType {
+  DEBIT
+  CREDIT
+
+  @@schema("public")
+}
